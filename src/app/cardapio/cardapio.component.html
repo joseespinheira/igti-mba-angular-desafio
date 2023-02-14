@@ -1,0 +1,28 @@
+<p>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Cardápio</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon>favorite</mat-icon>
+            </button>
+            <button routerLink="/pedido">
+                <span>VER PEDIDO</span>
+            </button>
+            <span>{{ps.valorTotal| currency}}</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</p>
+
+<mat-list role="list" *ngFor="let produto of produtos; let i = index">
+    <div *ngIf="i===0 || produtos[i-1].categoria !== produto.categoria">
+        <mat-list-item role="listitem">{{produto.categoria}}</mat-list-item>
+    </div>
+
+    <mat-list-item role="listitem" fxLayout="row" (click)="ps.add(produto)">
+        <span style="margin-right:'auto'">{{produto.descricao}}</span>
+        <span>{{produto.preco|currency}}</span>
+    </mat-list-item>
+</mat-list>
+

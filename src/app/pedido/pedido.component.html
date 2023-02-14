@@ -1,0 +1,35 @@
+<p>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Pedido</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</p>
+
+<mat-list role="list" *ngFor="let produto of ps.pedidos; let i = index">
+
+    <mat-list-item role="listitem" (click)="ps.add(produto)">
+        <label style="margin-right:'auto'">{{produto.descricao}}</label>
+        <label>{{produto.quantidade}} x {{produto.preco|currency}}</label>
+    </mat-list-item>
+
+</mat-list>
+<mat-list>
+    <mat-list-item role="listitem">
+        <label style="margin-right:'auto'">
+            <strong>
+                Total
+            </strong>
+        </label>
+        <label>
+            <strong>
+                {{ps.valorTotal|currency}}
+            </strong>
+        </label>
+    </mat-list-item>
+</mat-list>
+
+
+<button routerLink="/cardapio">Cardapio</button>
+<button (click)="ps.limpar()">Limpar</button>
+<button>Concluir</button>
